@@ -19,7 +19,7 @@ export default function QueryProcessor(query: string): string {
     return "btniu";
   }
   
-  let additionMatch = query.toLowerCase().match(/What is (\d+) plus (\d+)\?/);
+  let additionMatch = query.match(/what is (\d+)\s*\+\s*(\d+)\?/);
   if (additionMatch) {
       let num1 = parseInt(additionMatch[1], 10);
       let num2 = parseInt(additionMatch[2], 10);
