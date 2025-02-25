@@ -26,7 +26,14 @@ export default function QueryProcessor(query: string): string {
       return (num1 + num2).toString();
   }
 
-  let multiplicationMatch = query.match(/what is (\d+)\s*multiplied by\s*(\d+)\?/);
+    let subtractionMatch = query.match(/What is (\d+)\s*minus\s*(\d+)\?/);
+    if (subtractionMatch) {
+        let num1 = parseInt(subtractionMatch[1], 10);
+        let num2 = parseInt(subtractionMatch[2], 10);
+        return (num1 - num2).toString();
+    }
+
+  let multiplicationMatch = query.match(/What is (\d+)\s*multiplied by\s*(\d+)\?/);
   if (multiplicationMatch) {
       let num1 = parseInt(multiplicationMatch[1], 10);
       let num2 = parseInt(multiplicationMatch[2], 10);
