@@ -26,6 +26,13 @@ export default function QueryProcessor(query: string): string {
       return (num1 + num2).toString();
   }
 
+  let multiplicationMatch = query.match(/what is (\d+)\s*multiplied by\s*(\d+)\?/);
+  if (multiplicationMatch) {
+      let num1 = parseInt(multiplicationMatch[1], 10);
+      let num2 = parseInt(multiplicationMatch[2], 10);
+      return (num1 * num2).toString();
+  }
+
   let largestMatch = query.toLowerCase().match(/which of the following numbers is the largest: ([\d, ]+)\?/);
   if (largestMatch) {
       let numbers = largestMatch[1].split(",").map(num => parseInt(num.trim(), 10));
