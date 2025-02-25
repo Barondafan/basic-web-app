@@ -73,10 +73,12 @@ export default function QueryProcessor(query: string): string {
       return BigInt(Math.pow(Number(base), Number(exponent))).toString();
   }
 
-  let sumMatch2 = query.match(/([\d\s\+]+)\?/);
-  if (sumMatch2) {
-      let numbers = sumMatch2[1].split("+").map(num => parseInt(num.trim(), 10));
-      return numbers.reduce((a, b) => a + b, 0).toString();
+  let tripleAdditionMatch = query.match(/What is (\d+)\s*plus\s*(\d+)\s*plus\s*(\d+)\?/);
+  if (tripleAdditionMatch) {
+      let num1 = parseInt(tripleAdditionMatch[1], 10);
+      let num2 = parseInt(tripleAdditionMatch[2], 10);
+      let num3 = parseInt(tripleAdditionMatch[3], 10);
+      return (num1 + num2 + num3).toString();
   }
   return "";
 }
