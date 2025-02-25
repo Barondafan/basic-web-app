@@ -32,7 +32,7 @@ export default function QueryProcessor(query: string): string {
       return Math.max(...numbers).toString();
   }
 
-  let squareCubeMatch = query.match(/which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
+  let squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: ([\d, ]+)\?/);
   if (squareCubeMatch) {
       let numbers = squareCubeMatch[1].split(",").map(num => parseInt(num.trim(), 10));
       let perfectSixthPowers = numbers.filter(num => Number.isInteger(Math.pow(num, 1/6)));
