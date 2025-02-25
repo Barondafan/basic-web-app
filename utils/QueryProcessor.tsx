@@ -66,5 +66,12 @@ export default function QueryProcessor(query: string): string {
       return primes.join(", ") || "None";
   }
 
+  let powerMatch = query.match(/what is (\d+)\s*to the power of\s*(\d+)\?/);
+  if (powerMatch) {
+      let base = BigInt(powerMatch[1]);
+      let exponent = BigInt(powerMatch[2]);
+      return BigInt(Math.pow(Number(base), Number(exponent))).toString();
+  }
+
   return "";
 }
